@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import tensorflow as tf
 
-st.title("Mini modèle TensorFlow Lite – Démo ultra rapide")
+st.title("Mini modèle TensorFlow Lite – Démo rapide")
 
 # Charger le modèle TFLite une seule fois
 @st.cache_resource
@@ -13,7 +13,6 @@ def load_tflite_model():
 
 interpreter = load_tflite_model()
 
-# Fonction de prédiction TFLite
 def predict_tflite(value):
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
@@ -26,7 +25,6 @@ def predict_tflite(value):
     output = interpreter.get_tensor(output_details[0]['index'])
     return output.tolist()
 
-# Interface utilisateur
 value = st.number_input("Entrer une valeur (0 à 1)", min_value=0.0, max_value=1.0, step=0.01)
 
 if st.button("Prédire"):

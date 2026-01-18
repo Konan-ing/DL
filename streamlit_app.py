@@ -25,7 +25,7 @@ def predict_tflite(value):
     output = interpreter.get_tensor(output_details[0]['index'])
     return output.tolist()
 
-value = st.number_input("Entrer une valeur (0 à 1)", min_value=0.0, max_value=1.0, step=0.01)
+value = st.number_input("Entrer une valeur (0 à 1)", step=0.01)
 
 if st.button("Prédire"):
     result = predict_tflite(value)
